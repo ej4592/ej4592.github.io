@@ -949,24 +949,27 @@ table tfoot td {
 .about .cover-author-image {
   width: 100px;
   height: 100px;
-  margin: 0 auto 10px;
-  -webkit-border-radius: 100%;
-  border-radius: 100%;
-  overflow: hidden;
+  margin: 0 auto 30px;
+  display: inline-block;
+  /* or block, depending on your layout needs */
   background-color: #333030;
+  border-radius: 15px;
+  /* no overflow: hidden if you want to see the .about img corners */
+  text-align: center;
 }
 
 .about img {
   width: 100%;
   height: auto;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
+  border-radius: 15px;
+  /* Rounded square corners */
   -webkit-transition: -webkit-transform 0.35s;
   transition: -webkit-transform 0.35s;
   -o-transition: transform 0.35s;
   transition: transform 0.35s;
   transition: transform 0.35s, -webkit-transform 0.35s;
 }
+
 
 .about img:hover {
   -webkit-transform: scale3d(0.9, 0.9, 1);
