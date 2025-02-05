@@ -115,12 +115,29 @@
   </footer> <!-- End Footer -->
 </aside> <!-- End Sidebar -->
 <div class="content-box clearfix">
-  <article class="article-page">
+  
+<!-- MathJax Configuration -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<!-- MathJax Script -->
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<article class="article-page">
   <div class="page-content">
     
     <div class="page-cover-image">
       <figure>
-        <img class="page-image" src=/assets/img/self-help.avif alt="The Self Help Scam">
+        <img class="page-image" src="/assets/img/self-help.avif"
+          alt="The Self Help Scam">
         
       </figure>
     </div> <!-- End Page Cover Image -->
@@ -158,15 +175,18 @@
 
       <div class="page-footer">
         <div class="page-share">
-          <a href="https://twitter.com/intent/tweet?text=The Self Help Scam&url=http://localhost:4000/self-help/" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
-          <a href="https://facebook.com/sharer.php?u=http://localhost:4000/self-help/" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
-          <a href="https://plus.google.com/share?url=http://localhost:4000/self-help/" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+          <a href="https://twitter.com/intent/tweet?text=The Self Help Scam&url=http://localhost:4000/self-help/"
+            title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=http://localhost:4000/self-help/" title="Share on Facebook"
+            rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=http://localhost:4000/self-help/" title="Share on Google+"
+            rel="nofollow" target="_blank">Google+</a>
         </div>
         <div class="page-tag">
           
-            <a href="/tags#Philosophy" class="tag">&#35; Philosophy</a>
+          <a href="/tags#Philosophy" class="tag">&#35; Philosophy</a>
           
-            <a href="/tags#Self Help" class="tag">&#35; Self Help</a>
+          <a href="/tags#Self Help" class="tag">&#35; Self Help</a>
           
         </div>
       </div>
@@ -179,7 +199,6 @@
     </div> <!-- End Wrap Content -->
   </div> <!-- End Page Content -->
 </article> <!-- End Article Page -->
-
 </div>
 
   </div>

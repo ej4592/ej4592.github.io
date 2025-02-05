@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Paper Review: Deepseek-R1 - Hello, world! I'm Eric Ji</title>
+	<title>Paper Review: DeepSeek-R1 - Hello, world! I'm Eric Ji</title>
 
   <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
 
     <meta content="Hello, world! I'm Eric Ji" property="og:site_name">
   
-    <meta content="Paper Review: Deepseek-R1" property="og:title">
+    <meta content="Paper Review: DeepSeek-R1" property="og:title">
   
   
     <meta content="article" property="og:type">
   
   
-    <meta content="You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes." property="og:description">
+    <meta content="A review of DeepSeek-R1, an RL-trained reasoning LLM that improves self-evolution in problem-solving." property="og:description">
   
   
     <meta content="http://localhost:4000/deepseek/" property="og:url">
@@ -35,6 +35,8 @@
     
     <meta content="Paper Review" property="article:tag">
     
+    <meta content="Reinforcement Learning" property="article:tag">
+    
     <meta content="Math" property="article:tag">
     
   
@@ -43,19 +45,19 @@
     <meta name="twitter:site" content="@">
     <meta name="twitter:creator" content="@">
   
-    <meta name="twitter:title" content="Paper Review: Deepseek-R1">
+    <meta name="twitter:title" content="Paper Review: DeepSeek-R1">
   
   
     <meta name="twitter:url" content="http://localhost:4000/deepseek/">
   
   
-    <meta name="twitter:description" content="You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes.">
+    <meta name="twitter:description" content="A review of DeepSeek-R1, an RL-trained reasoning LLM that improves self-evolution in problem-solving.">
   
   
     <meta name="twitter:image:src" content="http://localhost:4000/assets/img/deepseek.avif">
   
 
-	<meta name="description" content="You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes.">
+	<meta name="description" content="A review of DeepSeek-R1, an RL-trained reasoning LLM that improves self-evolution in problem-solving.">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:image" content="">
@@ -117,66 +119,191 @@
   </footer> <!-- End Footer -->
 </aside> <!-- End Sidebar -->
 <div class="content-box clearfix">
-  <article class="article-page">
+  
+<!-- MathJax Configuration -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<!-- MathJax Script -->
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<article class="article-page">
   <div class="page-content">
     
     <div class="page-cover-image">
       <figure>
-        <img class="page-image" src=/assets/img/deepseek.avif alt="Paper Review: Deepseek-R1">
+        <img class="page-image" src="/assets/img/deepseek.avif"
+          alt="Paper Review: DeepSeek-R1">
         
       </figure>
     </div> <!-- End Page Cover Image -->
     
     <div class="wrap-content">
       <header class="header-page">
-        <h1 class="page-title">Paper Review: Deepseek-R1</h1>
+        <h1 class="page-title">Paper Review: DeepSeek-R1</h1>
         <div class="page-date"><span>2025, Jan 25&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
       </header>
-      <p>Recent work on Large Language Models (LLMs) has centered on improving post-training techniques to enhance reasoning, alignment, and adaptability with minimal computational cost. While OpenAI’s o1 series pioneered inference-time scaling of chain-of-thought reasoning, achieving notable gains in math, coding, and science tasks, the research community has struggled to replicate similar “general” reasoning performance using methods like process-based reward models, reinforcement learning (RL), or search algorithms.</p>
+      <h2 id="overview"><strong>Overview</strong></h2>
+<p>Recent work on Large Language Models (LLMs) has focused on <strong>reinforcement learning (RL) for self-improvement</strong>. While OpenAI’s o1 models enhanced <strong>reasoning abilities</strong> using inference-time scaling and chain-of-thought prompting, reproducing this performance in <strong>open-source models</strong> has remained a challenge.</p>
 
-<p>This paper takes a step toward pure RL-based improvement of LLM reasoning by training DeepSeek-V3-Base with the GRPO framework, resulting in a model called DeepSeek-R1-Zero. The model significantly boosts performance on reasoning benchmarks (e.g., from 15.6% to 71.0% pass@1 on AIME 2024, and up to 86.7% with majority voting), matching OpenAI-o1-0912. However, DeepSeek-R1-Zero suffers from issues such as readability and language mixing.</p>
-
-<p>To address these problems, the authors introduce DeepSeek-R1, which starts with a small supervised fine-tuning (SFT) dataset (“cold-start data”), followed by iterative reinforcement learning focusing on reasoning. Finally, they supplement the model with newly collected supervised data across various domains (e.g., writing, factual QA, self-cognition) and continue RL training. DeepSeek-R1 matches OpenAI-o1-1217 in reasoning performance.</p>
-
-<p>The team also explores distillation of DeepSeek-R1 into smaller dense models (e.g., Qwen2.5-32B, Llama variants). Distilling the larger model’s reasoning patterns into smaller architectures yields better results than directly applying RL to the smaller models. The distilled 14B model surpasses QwQ-32B-Preview, while the 32B and 70B distilled variants achieve state-of-the-art scores among dense models on the tested reasoning benchmarks. The authors open-source these distilled models for further community development.</p>
-
-<h2 id="plaid-ramps-kitsch-woke-pork-belly">Plaid ramps kitsch woke pork belly</h2>
-<p>90’s yr crucifix, selvage 8-bit listicle forage cliche shoreditch hammock microdosing synth. Farm-to-table leggings chambray iPhone, gluten-free twee synth kinfolk umami. Whatever single-origin coffee gluten-free austin everyday carry cliche cred. Plaid ramps kitsch woke pork belly organic. Trust fund whatever coloring book kombucha brooklyn. Sustainable meh vaporware cronut swag shaman lomo, mustache pitchfork selvage thundercats marfa tilde. Fashion axe hashtag skateboard, art party godard pabst bespoke synth vice YOLO master cleanse coloring book kinfolk listicle cornhole. Try-hard mixtape umami fanny pack man bun gastropub franzen tbh. Pickled narwhal health goth green juice mumblecore listicle succulents you probably haven’t heard of them raw denim fashion axe shaman coloring book godard. Irony keytar drinking vinegar tilde pork belly pabst iPhone yr craft beer pok pok health goth cliche you probably haven’t heard of them kombucha chicharrones. Direct trade hella roof party chia. Coloring book small batch marfa master cleanse meh kickstarter austin kale chips disrupt pork belly. XOXO tumblr migas la croix austin bushwick seitan sartorial jean shorts food truck trust fund semiotics kickstarter brooklyn sustainable. Umami knausgaard mixtape marfa. Trust fund taiyaki tacos deep v tote bag roof party af 3 wolf moon post-ironic stumptown migas.</p>
-
-<p><img src="/assets/img/we-in-rest.jpg" alt="I and My friends" /></p>
-
-<p>Selfies sriracha taiyaki woke squid synth intelligentsia PBR&amp;B ethical kickstarter art party neutra biodiesel scenester. Health goth kogi VHS fashion axe glossier disrupt, vegan quinoa. Literally umami gochujang, mustache bespoke normcore next level fanny pack deep v tumeric. Shaman vegan affogato chambray. Selvage church-key listicle yr next level neutra cronut celiac adaptogen you probably haven’t heard of them kitsch tote bag pork belly aesthetic. Succulents wolf stumptown art party poutine. Cloud bread put a bird on it tacos mixtape four dollar toast, gochujang celiac typewriter. Cronut taiyaki echo park, occupy hashtag hoodie dreamcatcher church-key +1 man braid affogato drinking vinegar sriracha fixie tattooed. Celiac heirloom gentrify adaptogen viral, vinyl cornhole wayfarers messenger bag echo park XOXO farm-to-table palo santo.</p>
-
-<blockquote>
-  <p>Hexagon shoreditch beard, man braid blue bottle green juice thundercats viral migas next level ugh. Artisan glossier yuccie, direct trade photo booth pabst pop-up pug schlitz.</p>
-</blockquote>
-
-<p>Cronut lumbersexual fingerstache asymmetrical, single-origin coffee roof party unicorn. Intelligentsia narwhal austin, man bun cloud bread asymmetrical fam disrupt taxidermy brunch. Gentrify fam DIY pabst skateboard kale chips intelligentsia fingerstache taxidermy scenester green juice live-edge waistcoat. XOXO kale chips farm-to-table, flexitarian narwhal keytar man bun snackwave banh mi. Semiotics pickled taiyaki cliche cold-pressed. Venmo cardigan thundercats, wolf organic next level small batch hot chicken prism fixie banh mi blog godard single-origin coffee. Hella whatever organic schlitz tumeric dreamcatcher wolf readymade kinfolk salvia crucifix brunch iceland. Literally meditation four loko trust fund. Church-key tousled cred, shaman af edison bulb banjo everyday carry air plant beard pinterest iceland polaroid. Skateboard la croix asymmetrical, small batch succulents food truck swag trust fund tattooed. Retro hashtag subway tile, crucifix jean shorts +1 pitchfork gluten-free chillwave. Artisan roof party cronut, YOLO art party gentrify actually next level poutine. Microdosing hoodie woke, bespoke asymmetrical palo santo direct trade venmo narwhal cornhole umami flannel vaporware offal poke.</p>
-
+<p>DeepSeek-R1 explores <strong>pure RL-based reasoning</strong> using the <strong>GRPO algorithm</strong>, improving math and logic tasks <strong>without supervised fine-tuning (SFT)</strong>. It achieves:</p>
 <ul>
-  <li>Hexagon shoreditch beard</li>
-  <li>Intelligentsia narwhal austin</li>
-  <li>Literally meditation four</li>
-  <li>Microdosing hoodie woke</li>
+  <li><strong>71.0% Pass@1 on AIME 2024</strong> (vs. 15.6% before RL, up to 86.7% with majority voting).</li>
+  <li><strong>Performance parity with OpenAI-o1-0912 and o1-1217 in reasoning</strong>.</li>
+  <li><strong>Superior distillation capabilities</strong>, improving smaller models such as Qwen2.5-32B and Llama.</li>
 </ul>
 
-<p>Wayfarers lyft DIY sriracha succulents twee adaptogen crucifix gastropub actually hexagon raclette franzen polaroid la croix. Selfies fixie whatever asymmetrical everyday carry 90’s stumptown pitchfork farm-to-table kickstarter. Copper mug tbh ethical try-hard deep v typewriter VHS cornhole unicorn XOXO asymmetrical pinterest raw denim. Skateboard small batch man bun polaroid neutra. Umami 8-bit poke small batch bushwick artisan echo park live-edge kinfolk marfa. Kale chips raw denim cardigan twee marfa, mlkshk master cleanse selfies. Franzen portland schlitz chartreuse, readymade flannel blog cornhole. Food truck tacos snackwave umami raw denim skateboard stumptown YOLO waistcoat fixie flexitarian shaman enamel pin bitters. Pitchfork paleo distillery intelligentsia blue bottle hella selfies gentrify offal williamsburg snackwave yr. Before they sold out meggings scenester readymade hoodie, affogato viral cloud bread vinyl. Thundercats man bun sriracha, neutra swag knausgaard jean shorts. Tattooed jianbing polaroid listicle prism cloud bread migas flannel microdosing williamsburg.</p>
+<hr />
 
-<p>Echo park try-hard irony tbh vegan pok pok. Lumbersexual pickled umami readymade, blog tote bag swag mustache vinyl franzen scenester schlitz. Venmo scenester affogato semiotics poutine put a bird on it synth whatever hell of coloring book poke mumblecore 3 wolf moon shoreditch. Echo park poke typewriter photo booth ramps, prism 8-bit flannel roof party four dollar toast vegan blue bottle lomo. Vexillologist PBR&amp;B post-ironic wolf artisan semiotics craft beer selfies. Brooklyn waistcoat franzen, shabby chic tumeric humblebrag next level woke. Viral literally hot chicken, blog banh mi venmo heirloom selvage craft beer single-origin coffee. Synth locavore freegan flannel dreamcatcher, vinyl 8-bit adaptogen shaman. Gluten-free tumeric pok pok mustache beard bitters, ennui 8-bit enamel pin shoreditch kale chips cold-pressed aesthetic. Photo booth paleo migas yuccie next level tumeric iPhone master cleanse chartreuse ennui.</p>
+<h2 id="reinforcement-learning-algorithm-grpo"><strong>Reinforcement Learning Algorithm: GRPO</strong></h2>
+<p>DeepSeek-R1 uses <strong>Group Relative Policy Optimization (GRPO)</strong>, a modification of <strong>PPO</strong> that eliminates the need for a critic network.</p>
+
+<h3 id="policy-optimization-objective"><strong>Policy Optimization Objective</strong></h3>
+<p>Given a set of outputs $ {o_1, o_2, \dots, o_G} $ sampled from the old policy $ \pi_{\theta_{\text{old}}} $, the GRPO objective is:
+\(J_{\mathrm{GRPO}}(\theta) = \mathbb{E}_{q \sim P(Q),\, \{o_i\} \sim \pi_{\theta_{\text{old}}}} \left[
+\frac{1}{G} \sum_{i=1}^{G} \min \left(
+\frac{\pi_{\theta}(o_i \mid q)}{\pi_{\theta_{\text{old}}}(o_i \mid q)}\, A_i,\;
+\operatorname{clip}\!\left( \frac{\pi_{\theta}(o_i \mid q)}{\pi_{\theta_{\text{old}}}(o_i \mid q)},\, 1-\epsilon,\, 1+\epsilon \right) A_i
+\right)
+\mathbin{-}\beta\, D_{\mathrm{KL}}\!\left(\pi_{\theta}\,\Vert\,\pi_{\text{ref}}\right)
+\right]\)</p>
+
+<p>where:</p>
+<ul>
+  <li>$ A_i $ is the <strong>advantage function</strong> based on group reward normalization:
+\(A_i = \frac{r_i - \operatorname{mean}\bigl(\{r_1, \dots, r_G\}\bigr)}{\operatorname{std}\bigl(\{r_1, \dots, r_G\}\bigr)}\)</li>
+  <li>$ D_{\mathrm{KL}}\left(\pi_{\theta}\,\Vert\,\pi_{\text{ref}}\right) $ <strong>regularizes policy updates</strong>, preventing collapse.</li>
+</ul>
+
+<hr />
+
+<h2 id="reward-modeling"><strong>Reward Modeling</strong></h2>
+<p>DeepSeek-R1 <strong>avoids reward hacking</strong> using structured, rule-based rewards:</p>
+<ol>
+  <li><strong>Accuracy Reward:</strong> Math/coding correctness is evaluated via test cases.</li>
+  <li><strong>Format Reward:</strong> The model is required to produce its output in a structured format, ensuring a clear separation between its internal reasoning process and the final answer.</li>
+</ol>
+
+<hr />
+
+<h2 id="emergent-self-evolution--benchmark-gains"><strong>Emergent Self-Evolution &amp; Benchmark Gains</strong></h2>
+<p>During training, DeepSeek-R1 exhibits a self-evolution process by:</p>
+<ul>
+  <li>Increasing its reasoning steps and thinking time.</li>
+  <li>Developing emergent behaviors such as self-reflection and multi-solution exploration.</li>
+</ul>
+
+<p>Key benchmark improvements include:</p>
+<ul>
+  <li><strong>AIME 2024 (Pass@1):</strong> Improvement from 15.6% to 71.0% (up to 86.7% with majority voting).</li>
+  <li><strong>MATH-500 (Pass@1):</strong> Achieving 97.3%, comparable to leading models.</li>
+  <li><strong>GPQA Diamond Tasks:</strong> Reaching 71.5% accuracy.</li>
+</ul>
+
+<hr />
+
+<h2 id="multi-stage-training-strategy"><strong>Multi-Stage Training Strategy</strong></h2>
+<p>DeepSeek-R1 utilizes a multi-stage training pipeline:</p>
+
+<h3 id="cold-start-phase"><strong>Cold-Start Phase</strong></h3>
+<p>A small amount of high-quality, long Chain-of-Thought (CoT) data is used to fine-tune the base model. This phase:</p>
+<ul>
+  <li>Enhances readability and output alignment.</li>
+  <li>Structures responses in a format similar to:</li>
+</ul>
+
+<h3 id="reinforcement-learning-phase"><strong>Reinforcement Learning Phase</strong></h3>
+<p>After the cold-start phase, iterative RL training is applied to further improve reasoning abilities, particularly in math and coding tasks. This phase leverages:</p>
+<ul>
+  <li><strong>Rule-based rewards</strong> for accuracy and language consistency.</li>
+  <li>Incentives to ensure clear, structured chain-of-thought outputs.</li>
+</ul>
+
+<hr />
+
+<h2 id="distillation-transferring-reasoning-to-smaller-models"><strong>Distillation: Transferring Reasoning to Smaller Models</strong></h2>
+<p>DeepSeek-R1’s learned reasoning patterns are distilled into smaller dense models (e.g., Qwen2.5-32B, Llama variants). This process demonstrates that:</p>
+<ul>
+  <li>Distilled models outperform smaller models trained solely via RL.</li>
+  <li>The reasoning capabilities of large models can be effectively transferred, preserving high performance.</li>
+</ul>
+
+<p>A comparison is provided below:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Model</strong></th>
+      <th><strong>AIME 2024 Pass@1</strong></th>
+      <th><strong>MATH-500 Pass@1</strong></th>
+      <th><strong>GPQA Diamond Pass@1</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RL on Qwen-32B</td>
+      <td>47.0\%</td>
+      <td>91.6\%</td>
+      <td>55.0\%</td>
+    </tr>
+    <tr>
+      <td><strong>Distilled Qwen-32B</strong></td>
+      <td><strong>72.6\%</strong></td>
+      <td><strong>94.3\%</strong></td>
+      <td><strong>62.1\%</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="challenges-and-limitations"><strong>Challenges and Limitations</strong></h2>
+<p>Key challenges identified include:</p>
+<ul>
+  <li><strong>Language Mixing:</strong> Occasional mixing of languages in outputs.</li>
+  <li><strong>Prompt Sensitivity:</strong> Few-shot prompting can degrade performance.</li>
+  <li><strong>Software Engineering Tasks:</strong> RL is less efficient for long-horizon tasks such as full-stack coding.</li>
+</ul>
+
+<hr />
+
+<h2 id="conclusion-and-future-work"><strong>Conclusion and Future Work</strong></h2>
+<p>DeepSeek-R1 demonstrates that LLMs can develop advanced reasoning capabilities through pure RL, without relying on supervised fine-tuning. The integrated pipeline of cold-start fine-tuning, iterative RL training, and subsequent distillation yields state-of-the-art performance on reasoning benchmarks.</p>
+
+<p>Future research directions include:</p>
+<ul>
+  <li>Enhancing <strong>multilingual reasoning</strong> consistency.</li>
+  <li>Developing more robust <strong>few-shot prompting</strong> strategies.</li>
+  <li>Optimizing RL for <strong>long-horizon tasks</strong> in software engineering.</li>
+</ul>
+
 
       <div class="page-footer">
         <div class="page-share">
-          <a href="https://twitter.com/intent/tweet?text=Paper Review: Deepseek-R1&url=http://localhost:4000/deepseek/" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
-          <a href="https://facebook.com/sharer.php?u=http://localhost:4000/deepseek/" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
-          <a href="https://plus.google.com/share?url=http://localhost:4000/deepseek/" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+          <a href="https://twitter.com/intent/tweet?text=Paper Review: DeepSeek-R1&url=http://localhost:4000/deepseek/"
+            title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=http://localhost:4000/deepseek/" title="Share on Facebook"
+            rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=http://localhost:4000/deepseek/" title="Share on Google+"
+            rel="nofollow" target="_blank">Google+</a>
         </div>
         <div class="page-tag">
           
-            <a href="/tags#AI" class="tag">&#35; AI</a>
+          <a href="/tags#AI" class="tag">&#35; AI</a>
           
-            <a href="/tags#Paper Review" class="tag">&#35; Paper Review</a>
+          <a href="/tags#Paper Review" class="tag">&#35; Paper Review</a>
           
-            <a href="/tags#Math" class="tag">&#35; Math</a>
+          <a href="/tags#Reinforcement Learning" class="tag">&#35; Reinforcement Learning</a>
+          
+          <a href="/tags#Math" class="tag">&#35; Math</a>
           
         </div>
       </div>
@@ -189,7 +316,6 @@
     </div> <!-- End Wrap Content -->
   </div> <!-- End Page Content -->
 </article> <!-- End Article Page -->
-
 </div>
 
   </div>
