@@ -1,31 +1,76 @@
 ---
 layout: post
-title: The Self Help Scam
-date: 2025-01-26 21:00:20 -0500 #date needs to be before current date 
-description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
-img: self-help.avif # Add image post (optional)
-fig-caption: # Add figcaption (optional)
-tags: [Philosophy, Self Help]
+title: "The Self-Help Scam: Just Read Bro"
+date: 2025-01-26 21:26:20 -0500
+description: The self-help industry thrives on illusion, while fiction and real non-fiction offer the wisdom you actually need.
+img: self-help.avif
+fig-caption:
+tags: [Philosophy, Self Help, Reading]
 ---
 
-Here’s the unvarnished truth: the self-help scene is basically a high-stakes flea market for your insecurities, peddling magic-bullet promises that translate into little more than repackaged clichés. It’s a multi-billion-dollar juggernaut getting rich off your anxieties, and if you dare to complain that your life didn’t miraculously improve after their three-step “secret to happiness,” they’ll respond with a perfectly curated smile and point out that you clearly aren’t trying hard enough. Meanwhile, the gurus pocket your money, blame you for any lack of progress, and wave yet another overpriced seminar in front of your face. Throw in a few buzzwords—maybe something about manifesting your “best self” or “vibrational alignment”—and suddenly common sense is spun into an elusive, high-ticket commodity. In reality, if you actually want to fix something, you might skip the carnival of motivational speeches and look for, say, an evidence-based therapist. But where’s the fun (and profit) in that?
+Here’s a bitter pill to swallow: the self-help industry is nothing more than a marketplace for your insecurities, peddling magic-bullet promises wrapped in repackaged clichés and pop psychology. If anything, reading self-help is probably one of the least effective ways to grow—unless, of course, your goal is to pad the wallets of influencers like David Goggins and Jocko Willink.  
 
-## Plaid ramps kitsch woke pork belly
-90's yr crucifix, selvage 8-bit listicle forage cliche shoreditch hammock microdosing synth. Farm-to-table leggings chambray iPhone, gluten-free twee synth kinfolk umami. Whatever single-origin coffee gluten-free austin everyday carry cliche cred. Plaid ramps kitsch woke pork belly organic. Trust fund whatever coloring book kombucha brooklyn. Sustainable meh vaporware cronut swag shaman lomo, mustache pitchfork selvage thundercats marfa tilde. Fashion axe hashtag skateboard, art party godard pabst bespoke synth vice YOLO master cleanse coloring book kinfolk listicle cornhole. Try-hard mixtape umami fanny pack man bun gastropub franzen tbh. Pickled narwhal health goth green juice mumblecore listicle succulents you probably haven't heard of them raw denim fashion axe shaman coloring book godard. Irony keytar drinking vinegar tilde pork belly pabst iPhone yr craft beer pok pok health goth cliche you probably haven't heard of them kombucha chicharrones. Direct trade hella roof party chia. Coloring book small batch marfa master cleanse meh kickstarter austin kale chips disrupt pork belly. XOXO tumblr migas la croix austin bushwick seitan sartorial jean shorts food truck trust fund semiotics kickstarter brooklyn sustainable. Umami knausgaard mixtape marfa. Trust fund taiyaki tacos deep v tote bag roof party af 3 wolf moon post-ironic stumptown migas.
+These so-called gurus profit off your dissatisfaction, somehow turning common sense into a high-value commodity. In reality, if reading more is one of your New Year’s resolutions, just pick up a book on something that genuinely interests you and start reading. Whether it’s philosophy, science, or even the latest romantasy novel, real growth comes from challenging your mind, immersing yourself in new ideas, and actually enjoying the process—not mindlessly consuming another round of motivational fluff.  
 
-![I and My friends]({{site.baseurl}}/assets/img/we-in-rest.jpg)
+## The Illusion of Productivity  
 
-Selfies sriracha taiyaki woke squid synth intelligentsia PBR&B ethical kickstarter art party neutra biodiesel scenester. Health goth kogi VHS fashion axe glossier disrupt, vegan quinoa. Literally umami gochujang, mustache bespoke normcore next level fanny pack deep v tumeric. Shaman vegan affogato chambray. Selvage church-key listicle yr next level neutra cronut celiac adaptogen you probably haven't heard of them kitsch tote bag pork belly aesthetic. Succulents wolf stumptown art party poutine. Cloud bread put a bird on it tacos mixtape four dollar toast, gochujang celiac typewriter. Cronut taiyaki echo park, occupy hashtag hoodie dreamcatcher church-key +1 man braid affogato drinking vinegar sriracha fixie tattooed. Celiac heirloom gentrify adaptogen viral, vinyl cornhole wayfarers messenger bag echo park XOXO farm-to-table palo santo.
+> "Nothing good ever came easy."  
 
->Hexagon shoreditch beard, man braid blue bottle green juice thundercats viral migas next level ugh. Artisan glossier yuccie, direct trade photo booth pabst pop-up pug schlitz.
+This is a truth that self-help books acknowledge but conveniently sidestep—because, let’s be honest, reading a self-help book is easy. Instead of embracing the difficulty of real growth, they package change as an effortless, step-by-step process. They make you feel productive without requiring actual effort. You highlight a few lines, nod in agreement at advice you already know—"wake up early," "be more disciplined," "network with important people"—and convince yourself you’re making progress.  
 
-Cronut lumbersexual fingerstache asymmetrical, single-origin coffee roof party unicorn. Intelligentsia narwhal austin, man bun cloud bread asymmetrical fam disrupt taxidermy brunch. Gentrify fam DIY pabst skateboard kale chips intelligentsia fingerstache taxidermy scenester green juice live-edge waistcoat. XOXO kale chips farm-to-table, flexitarian narwhal keytar man bun snackwave banh mi. Semiotics pickled taiyaki cliche cold-pressed. Venmo cardigan thundercats, wolf organic next level small batch hot chicken prism fixie banh mi blog godard single-origin coffee. Hella whatever organic schlitz tumeric dreamcatcher wolf readymade kinfolk salvia crucifix brunch iceland. Literally meditation four loko trust fund. Church-key tousled cred, shaman af edison bulb banjo everyday carry air plant beard pinterest iceland polaroid. Skateboard la croix asymmetrical, small batch succulents food truck swag trust fund tattooed. Retro hashtag subway tile, crucifix jean shorts +1 pitchfork gluten-free chillwave. Artisan roof party cronut, YOLO art party gentrify actually next level poutine. Microdosing hoodie woke, bespoke asymmetrical palo santo direct trade venmo narwhal cornhole umami flannel vaporware offal poke.
+But here’s the catch: knowing does not mean internalizing. Reading self-help is getting off on the idea of improving yourself rather than actually improving yourself. You get a dopamine hit from consuming the information, but nothing actually changes. There's absolutely nothing wrong with enjoying what you read, but the irony-laden, predatory nature of self-help books is what makes them insufferable. You still haven’t written that book, started that business, or learned that skill. You’ve just consumed another round of feel-good advice that vanishes the moment life actually tests you.  
 
-* Hexagon shoreditch beard
-* Intelligentsia narwhal austin
-* Literally meditation four
-* Microdosing hoodie woke
+## Jocko Willink wakes up early but does he really have thousands of pages of wisdom?  
 
-Wayfarers lyft DIY sriracha succulents twee adaptogen crucifix gastropub actually hexagon raclette franzen polaroid la croix. Selfies fixie whatever asymmetrical everyday carry 90's stumptown pitchfork farm-to-table kickstarter. Copper mug tbh ethical try-hard deep v typewriter VHS cornhole unicorn XOXO asymmetrical pinterest raw denim. Skateboard small batch man bun polaroid neutra. Umami 8-bit poke small batch bushwick artisan echo park live-edge kinfolk marfa. Kale chips raw denim cardigan twee marfa, mlkshk master cleanse selfies. Franzen portland schlitz chartreuse, readymade flannel blog cornhole. Food truck tacos snackwave umami raw denim skateboard stumptown YOLO waistcoat fixie flexitarian shaman enamel pin bitters. Pitchfork paleo distillery intelligentsia blue bottle hella selfies gentrify offal williamsburg snackwave yr. Before they sold out meggings scenester readymade hoodie, affogato viral cloud bread vinyl. Thundercats man bun sriracha, neutra swag knausgaard jean shorts. Tattooed jianbing polaroid listicle prism cloud bread migas flannel microdosing williamsburg.
+Take Jocko Willink—not trying to single him out specifically, but I’m sure he can spare a podcast episode to cry about it. The guy wakes up at 4 am, works out a lot, and was a navy seal. That’s impressive. But does that really justify an entire bookshelf of NYT best sellers?  
 
-Echo park try-hard irony tbh vegan pok pok. Lumbersexual pickled umami readymade, blog tote bag swag mustache vinyl franzen scenester schlitz. Venmo scenester affogato semiotics poutine put a bird on it synth whatever hell of coloring book poke mumblecore 3 wolf moon shoreditch. Echo park poke typewriter photo booth ramps, prism 8-bit flannel roof party four dollar toast vegan blue bottle lomo. Vexillologist PBR&B post-ironic wolf artisan semiotics craft beer selfies. Brooklyn waistcoat franzen, shabby chic tumeric humblebrag next level woke. Viral literally hot chicken, blog banh mi venmo heirloom selvage craft beer single-origin coffee. Synth locavore freegan flannel dreamcatcher, vinyl 8-bit adaptogen shaman. Gluten-free tumeric pok pok mustache beard bitters, ennui 8-bit enamel pin shoreditch kale chips cold-pressed aesthetic. Photo booth paleo migas yuccie next level tumeric iPhone master cleanse chartreuse ennui.
+At some point, reading self-help can be a vice in and of itself. The core message—be tougher, work harder, push through—could be summed up in a paragraph.
+
+Now compare that to fiction. If you want to internalize resilience, read *The Count of Monte Cristo*. Spend 1,300 pages *experiencing* Edmond Dantès’ suffering, patience, and transformation. His story doesn’t just tell you to be resilient—it makes you *feel* it. When life tests you, you don’t recall a bullet point from a self-help book. You recall *him*.  
+
+## Fiction Teaches More Than Discipline  
+
+Self-help books overemphasize discipline and motivation, as if they’re the only qualities that matter. But life isn’t just about grinding harder. There are countless other lessons—compassion, forgiveness, adaptability, self-awareness—that get ignored in the “3 workdays in 1”(IYKYK) mindset.  
+
+Fiction teaches these lessons naturally. *To Kill a Mockingbird* doesn’t just tell you about courage—it *shows* you through Atticus Finch’s quiet defiance. *Les Misérables* doesn’t summarize redemption in a neat list—it makes you *live* Jean Valjean’s transformation. These stories embed wisdom in emotions, struggles, and choices, making them stick in a way no self-help book ever could.  
+
+## Why Fiction Sticks and Self-Help Fades  
+
+When was the last time a self-help book truly changed the way you see the world? Now think about a novel that left a lasting impact. That’s the difference.  
+
+Fiction works because it engages your emotions, imagination, and empathy. Studies suggest reading fiction enhances emotional intelligence—your brain treats the character’s experiences as if they were your own. That’s why someone who reads *Crime and Punishment* understands guilt and redemption more deeply than someone who skimmed a chapter on “forgiving yourself.”  
+
+Self-help books give you a dopamine hit of motivation. Fiction changes how you think. One sells the illusion of growth. The other *actually* shapes you.  
+
+If you want to learn about resilience, discipline, or the human condition—put down the self-help books and pick up a novel. The lessons will last longer than any motivational mantra ever could.   
+
+## The Self-Help Trap: A Life of Constant Inadequacy  
+
+Self-help culture isn’t just misleading—it can be downright toxic. The entire industry is built on the premise that *you are never enough*. No matter what you achieve, no matter how much you improve, there will always be another book, another seminar, another “elite mindset hack” to unlock.  
+
+At its core, self-help sells the idea that happiness, success, and fulfillment are always *one more self-improvement cycle away*. But here’s the thing: the people selling you this dream are often the ones moving the goalposts. One moment, it’s about confidence. Then, it’s about financial freedom. Then, it’s about “escaping the matrix” and becoming an untouchable, self-made entrepreneur with millions in the bank and a lineup of exotic cars and women.  
+
+But ask yourself—who really benefits from this endless cycle of inadequacy? The reader looking for genuine self-improvement? Or the influencers and authors who keep cashing in on their audiences' dissatisfaction?  
+
+It’s one thing to want to improve. Growth is important. But self-help books rarely frame it that way. They don’t just encourage improvement; they commodify *insecurity*. They sell a lifestyle where you’re never allowed to be content. Where “making it” is always a moving target. Where your happiness is measured by your productivity, your wealth, and how many people envy you.  
+
+## Read for Pleasure Too! 
+
+Reading is one of the best hobbies you can have, and it doesn’t have to be “intellectual” to be valuable. Whether you’re diving into *Crime and Punishment* or flipping through *Diary of a Wimpy Kid*, reading for pleasure is *good*, full stop. Books don’t have to be difficult to be worth reading, and there’s nothing wrong with picking up something purely because you enjoy it.  
+
+The problem isn’t “easy” books—it’s self-help books pretending they aren’t. They market themselves as deep, instructional, and life-changing, but they rarely contain more substance than a children’s picture book. If you’re reading *Diary of a Wimpy Kid*, you know exactly what you’re getting: a fun, lighthearted story. If you pick up a fantasy novel, you expect to be entertained and immersed in another world. But self-help books? They lure you in with the promise of transformation, of profound wisdom—only to deliver surface-level advice wrapped in fluff.  
+
+At least with an actual textbook, you walk away with real knowledge. But self-help books? You walk away with vague affirmations and the lingering feeling that you *should* be doing more, without any concrete tools to make that happen.  
+
+## If You Actually Want to Learn and Self-Discipline, Read Real Non-Fiction  
+
+While fiction helps you internalize deep truths, non-fiction is essential if you actually want to learn something new and challenge yourself. But not the watered-down, pop-science books that promise to rewire your brain overnight—the real, rigorous stuff.
+If you want to understand more about how the world works, pick up any introductory college physics or math textbook and start working through the chapters and problems. Not only will you actually learn something, getting through *Introduction to Linear Algebra* is bound to make you more effective, whatever that means, than finishing *7 Habits of High Effective People*.
+
+## Conclusion 
+
+Self-help books trick you into thinking that reading alone is self-improvement. But reading isn’t the goal—*learning is*. And the books that truly make you grow are the ones that challenge your thinking, force you to engage deeply, and don’t just tell you what you want to hear.  
+
+Fiction immerses you in the struggles, triumphs, and wisdom of fully developed characters, making lessons stick in ways self-help never could. And if you truly want to improve in a particular area, real non-fiction—textbooks, deep-dive research, classic essays—offers structured knowledge that actually challenges you.  
+
+The wisdom you seek is already out there. It’s waiting in the pages of great stories and rigorous learning. You just need to start reading.
