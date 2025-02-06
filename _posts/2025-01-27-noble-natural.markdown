@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Is there any nobility to staying natural?
-date: 2025-01-27 21:00:20 -0500 #date needs to be before current date 
+date: 2025-02-02 21:00:20 -0500 #date needs to be before current date 
 description: Examining the changing definition of fitness in the era of pharmaceuticals and social media. 
 img: ozempic.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
