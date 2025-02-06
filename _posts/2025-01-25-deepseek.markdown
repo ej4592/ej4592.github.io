@@ -1,110 +1,198 @@
 ---
 layout: post
 title: "Paper Review: DeepSeek-R1"
-date: 2025-01-25 21:00:20 -0500 # Adjust to a date before today
+date: 2025-01-25 21:00:20 -0500
 description: A review of DeepSeek-R1, an RL-trained reasoning LLM that improves self-evolution in problem-solving.
-img: "deepseek.avif" # Add image if needed
-fig-caption: 
+img: "deepseek.avif"
 tags: [AI, Paper Review, Reinforcement Learning, Math]
 mathjax: true
 ---
 
-## **Overview**
-Recent work on Large Language Models (LLMs) has focused on **reinforcement learning (RL) for self-improvement**. While OpenAI’s o1 models enhanced **reasoning abilities** using inference-time scaling and chain-of-thought prompting, reproducing this performance in **open-source models** has remained a challenge.
-
-DeepSeek-R1 explores **pure RL-based reasoning** using the **GRPO algorithm**, improving math and logic tasks **without supervised fine-tuning (SFT)**. It achieves:
-- **71.0% Pass@1 on AIME 2024** (vs. 15.6% before RL, up to 86.7% with majority voting).
-- **Performance parity with OpenAI-o1-0912 and o1-1217 in reasoning**.
-- **Superior distillation capabilities**, improving smaller models such as Qwen2.5-32B and Llama.
+## **Introduction**
+**DeepSeek-R1** is a fully open-source Large Language Model (LLM) that achieves advanced reasoning capabilities primarily through **reinforcement learning (RL)**—bypassing the heavy supervised-instruction tuning seen in many other models. Its key innovation hinges on a **rule-based** strategy called **Group Relative Policy Optimization (GRPO)**. This post explores the **mathematical** aspects of **Transformers** and **GRPO**, and details the **training pipeline** behind DeepSeek-R1’s impressive problem-solving performance.
 
 ---
 
-## **Reinforcement Learning Algorithm: GRPO**
-DeepSeek-R1 uses **Group Relative Policy Optimization (GRPO)**, a modification of **PPO** that eliminates the need for a critic network.
+## **Recap: How Are LLMs Traditionally Trained?**
 
-### **Policy Optimization Objective**
-Given a set of outputs $ \{o_1, o_2, \dots, o_G\} $ sampled from the old policy $ \pi_{\theta_{\text{old}}} $, the GRPO objective is:
+### **1. Transformer Architecture: Intuition & Math**
+
+Modern LLMs like DeepSeek typically follow the **Transformer** design from the seminal *“Attention Is All You Need”*. The Transformer is built upon **attention mechanisms**, not recurrence or convolution. Here’s how it works:
+
+1. **Embedding & Positional Encoding**  
+   - **Embedding**: Each token $\( t \)$ is mapped to a vector $\( \mathbf{e}_t \)$.  
+   - **Positional Encoding**: Because Transformers handle tokens in parallel rather than sequentially, they need to encode token order separately. A popular approach is:
+
+     $$
+     \mathrm{PE}(\text{pos},\,2i) \;=\; \sin\!\Bigl(\frac{\text{pos}}{10000^{2i / d_{\text{model}}}}\Bigr), 
+     \quad
+     \mathrm{PE}(\text{pos},\,2i + 1) \;=\; \cos\!\Bigl(\frac{\text{pos}}{10000^{2i / d_{\text{model}}}}\Bigr),
+     $$
+     where $\(\text{pos}\)$ is the token position, $\(i\)$ indexes the embedding dimension, and $\(d_{\text{model}}\)$ is the total embedding size.
+
+2. **Multi-Head Self-Attention (MHSA)**  
+   - Each token embedding is projected into **query** $\( Q \)$, **key** $\( K \)$, and **value** $\( V \)$ vectors.  
+   - For one attention head, we have:
+     $$
+     \mathrm{Attention}(Q,\,K,\,V)
+     \;=\;
+     \mathrm{softmax}\!\Bigl(\tfrac{Q K^\top}{\sqrt{d_k}}\Bigr)\,V,
+     $$
+     where $\( d_k \)$ is often $\( d_{\text{model}} / \text{num\_heads} \)$.  
+   - **Parallel Heads**: Multiple heads run simultaneously, letting the model attend to different aspects of the sequence (e.g., grammar, semantics).
+
+3. **Feedforward & Residual Layers**  
+   - After attention, each token embedding passes through a position-wise feedforward network:
+     $$
+     \mathrm{FFN}(x) 
+     \;=\;
+     \sigma\!\bigl(x\,W_1 + b_1\bigr)\,W_2 + b_2,
+     $$
+     where $\(\sigma\)$ can any non linear activation function  
+   - **Residual connections** and **layer normalization** help training converge more reliably. Multiple layers of attention + feedforward form the Transformer’s main body.
+
+**Intuitive Picture**:  
+- **Attention**: Each token “looks at” all other tokens to decide which ones matter.  
+- **Multi-head**: The model can capture multiple relationships in parallel.  
+- **Residuals**: Ensure stable gradients, essential for training large models.
+
+---
+
+### **2. Pre-training with Maximum Likelihood**
+
+Once the Transformer is set up, it’s **pre-trained** on massive text corpora via next-token prediction. If $\((x,y)\)$ is a context–target pair in dataset $\(\mathcal{D}\)$, the goal is:
 $$
-J_{\mathrm{GRPO}}(\theta) = \mathbb{E}_{q \sim P(Q),\, \{o_i\} \sim \pi_{\theta_{\text{old}}}} \left[
-\frac{1}{G} \sum_{i=1}^{G} \min \left(
-\frac{\pi_{\theta}(o_i \mid q)}{\pi_{\theta_{\text{old}}}(o_i \mid q)}\, A_i,\;
-\operatorname{clip}\!\left( \frac{\pi_{\theta}(o_i \mid q)}{\pi_{\theta_{\text{old}}}(o_i \mid q)},\, 1-\epsilon,\, 1+\epsilon \right) A_i
-\right)
-\mathbin{-}\beta\, D_{\mathrm{KL}}\!\left(\pi_{\theta}\,\Vert\,\pi_{\text{ref}}\right)
-\right]
+\max_{\theta}
+\;\sum_{(x,\,y)\,\in\,\mathcal{D}}
+\;\log P\!\bigl(y \,\mid\, x;\,\theta\bigr),
+$$
+where:
+- $\( x \)$ is a partial sequence (context),
+- $\( y \)$ is the **next token**,
+- $\( \theta \)$ are the Transformer’s parameters (including embeddings, attention layers, etc.).
+
+This **self-supervised** stage imbues the model with broad language understanding, enabling it to handle diverse inputs.
+
+---
+
+### **3. Supervised Fine-Tuning (SFT)**
+
+Following pre-training, many LLMs undergo **supervised fine-tuning** on curated instruction–response or Q&A datasets:
+$$
+\max_{\theta}
+\;\sum_{(x,\,y)\,\in\,\mathcal{D}_{\mathrm{SFT}}}
+\;\log P\!\bigl(y \,\mid\, x;\,\theta\bigr).
+$$
+Here, \(\mathcal{D}_{\mathrm{SFT}}\) is usually smaller but **high-quality**, containing explicit instructions or question–answer pairs. This step further shapes the model to produce **human-aligned** outputs, improving clarity or relevance.
+
+---
+
+### **4. Reinforcement Learning**
+
+Finally, some LLMs leverage **RL** to polish their policy \(\pi_\theta\). In **RL from Human Feedback (RLHF)**, for instance, model outputs are ranked or scored (often by human annotators), providing reward signals for desired responses.
+
+The typical pipeline is:
+1. **Pre-train** on unlabeled text.
+2. **Supervised Fine-Tune** on instruction data.
+3. **RL** (e.g., RLHF) to optimize for specific user preferences or correctness signals.
+
+---
+
+## **DeepSeek-R1: Group Relative Policy Optimization (GRPO)**
+
+### **Motivation**
+DeepSeek-R1 focuses on **math and logical reasoning** but avoids extensive supervised data. Instead, it employs **GRPO**, a variant of **Proximal Policy Optimization (PPO)** that **removes** the need for a critic network. By **normalizing** rewards within each mini-batch, GRPO emphasizes which outputs are best relative to peers.
+### **Sampling and Rewards**
+- Let $q$ be the query (e.g., a math question).  
+- Let $\pi_{\theta_{\text{old}}}$ be the old policy parameters.
+For each $q$, the model **samples** a group of outputs $\(\{o_1,\dots,o_G\}\)$, each including:
+1. **Chain-of-thought** (internal reasoning),
+2. **Final answer**.
+A rule-based reward function $\(r_i\)$ assigns scores based on:
+- **Accuracy** (final answer correctness),
+- **Format** (proper `<think>` tags, clarity, structure).
+### **Group-Relative Advantage**
+While PPO typically uses a critic $V^\pi$, GRPO **omits** it in favor of a **group-relative** advantage:
+$$
+A_i
+\;=\;
+\frac{\,r_i \,-\, \mathrm{mean}(\{r_1,\dots,r_G\})\,}
+       {\,\mathrm{std}(\{r_1,\dots,r_G\})\,}.
+$$
+This normalization shows how much better or worse each output \(o_i\) is compared to the **mean** of that batch.
+### **GRPO Objective**
+The policy $\(\theta\)$ is **updated** by maximizing:
+$$
+J_{\mathrm{GRPO}}(\theta)
+=
+\mathbb{E}_{\,q \,\sim\, P(Q),\;\{o_i\}\,\sim\, \pi_{\theta_{\text{old}}}\,}
+\Biggl[
+  \frac{1}{G}\sum_{\,i=1}^{G}
+    \min\!\Bigl(
+      \frac{\,\pi_{\theta}(o_i \,\mid\, q)\,}
+           {\pi_{\theta_{\text{old}}}(o_i \,\mid\, q)}\,A_i,\;\;
+      \operatorname{clip}\!\Bigl(
+        \tfrac{\pi_{\theta}(o_i \,\mid\, q)}
+              {\pi_{\theta_{\text{old}}}(o_i \,\mid\, q)},
+        1-\epsilon,\,
+        1+\epsilon
+      \Bigr)\,A_i
+    )
+  \,-\, \beta\, D_{\mathrm{KL}}\!\bigl(\pi_{\theta}\,\Vert\, \pi_{\text{ref}}\bigr)
+\Biggr],
 $$
 
 where:
-- $ A_i $ is the **advantage function** based on group reward normalization:
-  $$
-  A_i = \frac{r_i - \operatorname{mean}\bigl(\{r_1, \dots, r_G\}\bigr)}{\operatorname{std}\bigl(\{r_1, \dots, r_G\}\bigr)}
-  $$
-- $ D_{\mathrm{KL}}\left(\pi_{\theta}\,\Vert\,\pi_{\text{ref}}\right) $ **regularizes policy updates**, preventing collapse.
+- $\displaystyle \frac{\pi_{\theta}(o_i \mid q)}{\pi_{\theta_{\text{old}}}(o_i \mid q)}$ is the ratio of new vs. old policy probabilities,
+- $\min(\cdot,\cdot)$ and $\operatorname{clip}(\cdot)$ follow PPO’s trust-region concept,
+- $D_{\mathrm{KL}}\!\bigl(\pi_{\theta}\,\Vert\,\pi_{\text{ref}}\bigr)$ is a penalty term limiting drastic policy shifts.
 
 ---
 
-## **Reward Modeling**
-DeepSeek-R1 **avoids reward hacking** using structured, rule-based rewards:
-1. **Accuracy Reward:** Math/coding correctness is evaluated via test cases.
-2. **Format Reward:** The model is required to produce its output in a structured format, ensuring a clear separation between its internal reasoning process and the final answer.
+## **DeepSeek-R1 Training Pipeline**
+
+1. **Base Pre-Trained Model**  
+   - Start with **DeepSeek-V3-Base**, which has already learned general language usage via next-token prediction.
+
+2. **DeepSeek-R1-Zero (Pure RL)**  
+   - **Skip** large-scale supervised fine-tuning.  
+   - Apply GRPO with **rule-based** rewards (accuracy, format).  
+   - Test math/logic automatically for correctness.
+
+3. **Cold-Start Refinement**  
+   - Minimal supervised tuning on a small, hand-chosen dataset.  
+   - Aims to fix issues like language mixing or unclear formatting.
+
+4. **Further RL**  
+   - More GRPO passes on math, logic, coding tasks.  
+   - Possibly new rule-based signals (style, language constraints).
+
+5. **Rejection Sampling + Additional Fine-Tuning**  
+   - Generate a large set of outputs.  
+   - **Filter** out poor solutions.  
+   - Fine-tune on the best ones to enhance overall quality.
+
+6. **Diverse RL**  
+   - Final RL run on a broader task range.  
+   - Mix rule-based feedback (for clearly testable tasks) with model-based or partial human feedback for subjective questions.
 
 ---
 
-## **Emergent Self-Evolution & Benchmark Gains**
-During training, DeepSeek-R1 exhibits a self-evolution process by:
-- Increasing its reasoning steps and thinking time.
-- Developing emergent behaviors such as self-reflection and multi-solution exploration.
+## **Emergent Reasoning & Performance**
 
-Key benchmark improvements include:
-- **AIME 2024 (Pass@1):** Improvement from 15.6% to 71.0% (up to 86.7% with majority voting).
-- **MATH-500 (Pass@1):** Achieving 97.3%, comparable to leading models.
-- **GPQA Diamond Tasks:** Reaching 71.5% accuracy.
+### **Self-Evolution**
+With **group-normalized** rewards, DeepSeek-R1 **spontaneously** learns to:
+- Lengthen chain-of-thought for tough problems,  
+- Correct initial reasoning mid-solution,  
+- Demonstrate “Aha” moments of insight.
 
----
-
-## **Multi-Stage Training Strategy**
-DeepSeek-R1 utilizes a multi-stage training pipeline:
-
-### **Cold-Start Phase**
-A small amount of high-quality, long Chain-of-Thought (CoT) data is used to fine-tune the base model. This phase:
-- Enhances readability and output alignment.
-- Structures responses in a format similar to:
-
-
-### **Reinforcement Learning Phase**
-After the cold-start phase, iterative RL training is applied to further improve reasoning abilities, particularly in math and coding tasks. This phase leverages:
-- **Rule-based rewards** for accuracy and language consistency.
-- Incentives to ensure clear, structured chain-of-thought outputs.
+### **Benchmark Gains**
+- **AIME** (Pass@1) rose from about 15.6% (pre-RL) to over 70% using GRPO.  
+- **MATH** tasks approached state-of-the-art accuracy, rivaling or surpassing some proprietary models.
 
 ---
 
-## **Distillation: Transferring Reasoning to Smaller Models**
-DeepSeek-R1's learned reasoning patterns are distilled into smaller dense models (e.g., Qwen2.5-32B, Llama variants). This process demonstrates that:
-- Distilled models outperform smaller models trained solely via RL.
-- The reasoning capabilities of large models can be effectively transferred, preserving high performance.
+## **Conclusion**
+DeepSeek-R1 exemplifies how LLMs can be refined **purely via rule-based RL**, largely **without** huge supervised instruction data. By harnessing **group-relative** advantage (GRPO) and a staged training pipeline, it narrows the gap between open-source and proprietary approaches—particularly in math/logic reasoning.
 
-A comparison is provided below:
-
-| **Model**               | **AIME 2024 Pass@1** | **MATH-500 Pass@1** | **GPQA Diamond Pass@1** |
-|-------------------------|----------------------|---------------------|-------------------------|
-| RL on Qwen-32B          | 47.0\%              | 91.6\%              | 55.0\%                 |
-| **Distilled Qwen-32B**  | **72.6\%**          | **94.3\%**          | **62.1\%**             |
-
----
-
-## **Challenges and Limitations**
-Key challenges identified include:
-- **Language Mixing:** Occasional mixing of languages in outputs.
-- **Prompt Sensitivity:** Few-shot prompting can degrade performance.
-- **Software Engineering Tasks:** RL is less efficient for long-horizon tasks such as full-stack coding.
-
----
-
-## **Conclusion and Future Work**
-DeepSeek-R1 demonstrates that LLMs can develop advanced reasoning capabilities through pure RL, without relying on supervised fine-tuning. The integrated pipeline of cold-start fine-tuning, iterative RL training, and subsequent distillation yields state-of-the-art performance on reasoning benchmarks.
-
-Future research directions include:
-- Enhancing **multilingual reasoning** consistency.
-- Developing more robust **few-shot prompting** strategies.
-- Optimizing RL for **long-horizon tasks** in software engineering.
-
+As LLM innovation continues, this strategy may **reduce** reliance on massive human annotations. With a reported \$5 million training budget, DeepSeek-R1 illustrates that **scalable RL** for LLMs is both feasible and transformative for the future of AI research.
