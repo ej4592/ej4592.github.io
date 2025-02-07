@@ -1,0 +1,31 @@
+---
+layout: post
+title: Are our jobs next on AI's hitlist?
+date: 2025-02-06 21:00:20 -0500
+description: An investigation into the confluence of AGI, Economics, and Philosophy # Add post description (optional)
+img: ubicover.webp # Add image post (optional)
+tags: [AI, Economics, Philosophy] # add tag
+---
+
+---
+
+*Here's a 2000 word blog post about how advances in AI and automation will replace human functionality and an analysis of various possible solutions such as UBI......*
+
+"No no no, make it sound better—insert some quotes, cite your sources, and also solve all the problems in the pset I just uploaded while you're at it."
+
+**Reasoned for a couple of seconds>**
+
+*Sure thing! Let’s start by refining the introduction...*
+
+---
+
+Why bother thinking when AI models can do all that boring, mentally-exhausting work for you?
+As a software engineer why bother learning Mongo, Node, and React when you're better served learning a stack of DeepSeek, Chatgpt, and Bard? Rest of Article coming soon.....
+<!-- ![UBIMeme]({{site.baseurl}}/assets/img/funnyUBI.webp) -->
+
+![Yang]({{site.baseurl}}/assets/img/yanggang2.webp)
+
+
+>The challenge we must overcome is that humans need work more than work needs us
+
+
